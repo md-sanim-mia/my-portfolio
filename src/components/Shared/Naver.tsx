@@ -8,8 +8,9 @@ const Naver = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navLinks = [
     { href: "/", label: "Home" },
+    { href: "/projects", label: "All Project" },
     { href: "/blogs", label: "Blogs" },
-    { href: "/about", label: "About Us" },
+    { href: "/contact", label: "Contact Us" },
     { href: "/support", label: "Support" },
   ];
 

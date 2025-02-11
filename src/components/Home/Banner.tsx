@@ -9,7 +9,7 @@ import {
 import { Typewriter } from "react-simple-typewriter";
 const Banner = () => {
   return (
-    <div className="px-1  gap-4 flex-row-reverse lg:flex  items-center">
+    <div className="px-1 gap-4 flex-row-reverse lg:flex  items-center">
       <div className=" lg:py-0 py-5 lg:w-1/2  grid justify-center">
         <div className=" text-white rounded-full">
           <img
