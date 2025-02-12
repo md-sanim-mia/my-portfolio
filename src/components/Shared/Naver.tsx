@@ -11,7 +11,7 @@ const Naver = () => {
     { href: "/projects", label: "All Project" },
     { href: "/blogs", label: "Blogs" },
     { href: "/contact", label: "Contact Us" },
-    { href: "/support", label: "Support" },
+    { href: "/dashboard", label: "Dashboard" },
   ];
 
   return (
