@@ -1,9 +1,10 @@
+import { TBlogs } from "@/types/gobol.type";
 import Image from "next/image";
 import Link from "next/link";
 import { AiFillLike } from "react-icons/ai";
 import { FaCalendar } from "react-icons/fa";
 
-const BlogCard = ({ blog }: { blog: any }) => {
+const BlogCard = ({ blog }: { blog: TBlogs }) => {
   return (
     <div className="w-full bg-gray-800 shadow-md rounded-lg overflow-hidden">
       <figure>
@@ -37,7 +38,10 @@ const BlogCard = ({ blog }: { blog: any }) => {
           <div className="flex items-center">
             <div className="w-8 h-8 rounded-full overflow-hidden mr-2">
               <Image
-                src="https://cdn-icons-png.flaticon.com/512/219/219986.png"
+                src={
+                  blog?.authorImage ||
+                  "https://cdn-icons-png.flaticon.com/512/219/219986.png"
+                }
                 width={100}
                 height={100}
                 alt="author image"
@@ -50,7 +54,7 @@ const BlogCard = ({ blog }: { blog: any }) => {
           </div>
           <div className="flex items-center text-sm text-gray-700">
             <AiFillLike className="text-teal-600 text-xl mr-1" />
-            {blog?.total_likes} Likes
+            100 Likes
           </div>
         </div>
       </div>

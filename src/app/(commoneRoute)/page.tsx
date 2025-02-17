@@ -1,10 +1,13 @@
 import Banner from "@/components/Home/Banner";
 import Skills from "@/components/Home/Skills";
 import ProjectCard from "@/components/Project/ProjectCard";
-import Image from "next/image";
-
+import { TProject } from "@/types/gobol.type";
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Sanim Mia | Home",
+};
 export default async function Home() {
-  const res = await fetch("http://localhost:5000/allProjects", {
+  const res = await fetch("https://protfilo-server.vercel.app/allProjects", {
     next: {
       revalidate: 30,
     },
@@ -18,7 +21,7 @@ export default async function Home() {
         featured projects
       </h2>
       <div className="grid lg:grid-cols-3  gap-8">
-        {data.slice(0, 6)?.map((item: any, index: number) => (
+        {data?.slice(0, 6)?.map((item: TProject, index: number) => (
           <ProjectCard key={index} project={item} />
         ))}
       </div>

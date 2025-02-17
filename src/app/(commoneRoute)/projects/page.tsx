@@ -1,8 +1,13 @@
 import ProjectCard from "@/components/Project/ProjectCard";
-import React from "react";
-
+import { TProject } from "@/types/gobol.type";
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Sanim Mia | Projects",
+};
 const AllProjectsPage = async () => {
-  const res = await fetch("http://localhost:5000/allProjects");
+  const res = await fetch("https://protfilo-server.vercel.app/allProjects", {
+    cache: "no-store",
+  });
   const data = await res.json();
   return (
     <div className="max-w-screen-xl mx-auto">
@@ -13,7 +18,7 @@ const AllProjectsPage = async () => {
         </p>
       </div>
       <div className="grid mt-12 lg:grid-cols-3  gap-8">
-        {data.slice(0, 6)?.map((item: any, index: number) => (
+        {data.slice(0, 6)?.map((item: TProject, index: number) => (
           <ProjectCard key={index} project={item} />
         ))}
       </div>

@@ -1,16 +1,13 @@
 "use client";
-import { useEffect, useState } from "react";
 import {
   FaReact,
   FaNodeJs,
-  FaPython,
   FaHtml5,
   FaCss3Alt,
   FaGitAlt,
   FaJs,
 } from "react-icons/fa";
 import {
-  SiJavascript,
   SiTailwindcss,
   SiMongodb,
   SiFirebase,
@@ -18,15 +15,7 @@ import {
   SiTypescript,
   SiRedux,
 } from "react-icons/si";
-import Image from "next/image";
-import { BiRocket } from "react-icons/bi";
 const Skills = () => {
-  const [animateBars, setAnimateBars] = useState(false);
-
-  useEffect(() => {
-    setAnimateBars(true);
-  }, []);
-
   const skills = [
     { name: "React.js", icon: <FaReact className="text-blue-500" /> },
     { name: "Next.js", icon: <SiNextdotjs className="text-black" /> },

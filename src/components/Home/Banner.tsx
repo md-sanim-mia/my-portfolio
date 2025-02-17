@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import {
   FaArrowDown,
   FaFacebook,
@@ -12,11 +13,13 @@ const Banner = () => {
     <div className="px-1 gap-4 flex-row-reverse lg:flex  items-center">
       <div className=" lg:py-0 py-5 lg:w-1/2  grid justify-center">
         <div className=" text-white rounded-full">
-          <img
-            className="object-cover shadow-lg object-center"
+          <Image
             style={{ boxShadow: "0 4px 7px rgba(255, 255, 255, 0.7)" }}
             src="/sanims.png"
-            alt=""
+            height={400}
+            width={600}
+            className="object-cover w-full h-full  shadow-lg object-center"
+            alt="sanim"
           />
         </div>
       </div>

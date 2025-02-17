@@ -1,18 +1,22 @@
+import { TBlogs } from "@/types/gobol.type";
 import Image from "next/image";
 import { AiFillLike } from "react-icons/ai";
 import { FaCalendar } from "react-icons/fa";
 
-const BlogDetailsCard = ({ blog }: { blog: any }) => {
+const BlogDetailsCard = ({ blog }: { blog: TBlogs }) => {
   return (
-    <div className="w-2/3 bg-white shadow-lg rounded-lg mx-auto p-6">
-      <p className="flex items-center justify-center mx-auto text-teal-500 bg-teal-100 w-fit px-3 py-1 rounded-full">
+    <div className=" w-2/3 bg-gray-800 shadow-lg rounded-lg mx-auto p-6">
+      <p className="flex items-center justify-center mx-auto text-teal-500  w-fit px-3 py-1 rounded-full">
         <FaCalendar className="mr-2" />
         {blog?.date}
       </p>
       <h2 className="text-center text-4xl font-semibold my-5">{blog?.title}</h2>
-      <div className="flex items-center justify-center bg-gray-100 mb-5 py-2 rounded-lg gap-2">
+      <div className="flex items-center justify-center  mb-5 py-2 rounded-lg gap-2">
         <Image
-          src="https://cdn-icons-png.flaticon.com/512/219/219986.png"
+          src={
+            blog?.authorImage ||
+            "https://cdn-icons-png.flaticon.com/512/219/219986.png"
+          }
           width={30}
           height={30}
           alt="author image"

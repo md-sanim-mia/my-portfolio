@@ -1,12 +1,14 @@
 import Footer from "@/components/Shared/Footer";
 import Naver from "@/components/Shared/Naver";
-import React, { ReactNode } from "react";
+import { authOptions } from "@/utils/authOptions";
+import { getServerSession, Session } from "next-auth";
+import { ReactNode } from "react";
 
-const layout = ({ children }: Readonly<{ children: ReactNode }>) => {
+const layout = async ({ children }: Readonly<{ children: ReactNode }>) => {
+  const session: Session | null = await getServerSession(authOptions);
   return (
     <div>
-      {" "}
-      <Naver />
+      <Naver session={session} />
       {children}
       <Footer />
     </div>

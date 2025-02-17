@@ -2,8 +2,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-
-const Naver = () => {
+import { Button } from "../ui/button";
+import { signOut } from "next-auth/react";
+import Image from "next/image";
+import { Session } from "next-auth";
+const Naver = ({ session }: { session: Session | null }) => {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const navLinks = [
@@ -11,8 +14,8 @@ const Naver = () => {
     { href: "/projects", label: "All Project" },
     { href: "/blogs", label: "Blogs" },
     { href: "/contact", label: "Contact Us" },
-    { href: "/dashboard", label: "Dashboard" },
-  ];
+    (session && { href: "/dashboard", label: "Dashboard" }) || null,
+  ].filter((item) => item !== null);
 
   return (
     <div className="h-16 mb-4">
@@ -24,10 +27,12 @@ const Naver = () => {
                 {" "}
                 <span className="border border-[#64FFDA] rounded-full">
                   {" "}
-                  <img
-                    className=" p-[2px] w-10 h-10 rounded-full"
+                  <Image
+                    className="p-[2px] w-10 h-10 rounded-full"
                     src="/sanims.png"
-                    alt=""
+                    alt="sanim"
+                    height={40}
+                    width={40}
                   />
                 </span>{" "}
                 Sanim Mia
@@ -84,20 +89,37 @@ const Naver = () => {
               }`}
             >
               <div className="flex flex-col -mx-6 lg:flex-row lg:items-center  lg:mx-8">
-                {navLinks.map(({ href, label }) => (
+                {navLinks?.map((item) => (
                   <Link
-                    key={href}
-                    href={href}
+                    key={item?.href}
+                    href={item?.href}
                     className={`${
-                      pathname === href
+                      pathname === item?.href
                         ? "text-[#64FFDA] font-bold mx-3"
                         : "text-[#CCD6F6] hover:text-[#64FFDA] mx-3"
                     }`}
                   >
-                    {label}
+                    {item?.label}
                   </Link>
                 ))}
               </div>
+
+              {session ? (
+                <Button
+                  className="bg-red-500 hover:bg-white"
+                  onClick={() => signOut()}
+                >
+                  Logout
+                </Button>
+              ) : (
+                <Link href={"/login"}>
+                  <Button className="bg-[#64FFDA] hover:bg-white text-black">
+                    {" "}
+                    sign in
+                  </Button>
+                </Link>
+              )}
+
               {/* <div className="lg:grid hidden">
                 {user ? (
                   <div className="relative inline-block">
